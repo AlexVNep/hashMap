@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
-      title: "",
+      title: "Hash Map",
       inject: "body",
     }),
   ],
