@@ -106,6 +106,16 @@ class HashMap {
       this.buckets[i] = [];
     }
   }
+
+  keys() {
+    let keys = [];
+    for (let i = 0; i < this.capacity; i++) {
+      if (this.buckets[i]) {
+        keys.push(this.buckets[i]);
+      }
+    }
+    return keys;
+  }
 }
 
 const test = new HashMap();
@@ -119,5 +129,5 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-console.log(test.clear());
+console.log(test.keys());
 console.log(test.buckets);
