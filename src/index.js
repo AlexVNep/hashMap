@@ -40,16 +40,18 @@ class HashMap {
     }
   }
 
-  //   get(key) {
-  //     const index = this.hash(key);
+  get(key) {
+    const index = this.hash(key);
 
-  //     if (this.buckets[index] == null) {
-  //       console.log("first");
-  //       return null;
-  //     }
-  //     console.log("second");
-  //     return this.buckets[index];
-  //   }
+    if (!this.buckets[index]) {
+      return null;
+    }
+    const found = this.buckets[index].find((pair) => pair.key === key);
+    if (found) {
+      return found.value; // Assuming your structure has a value.value property
+    }
+    return null;
+  }
 
   length() {
     let counter = 0;
@@ -83,4 +85,4 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-// console.log(test.get("rat"));
+console.log(test.get("apple"));
