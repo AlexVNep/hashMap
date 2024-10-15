@@ -3,6 +3,7 @@ class HashMap {
     this.capacity = 16;
     this.loadFactor = 0.75;
     this.buckets = new Array(this.capacity);
+    this.size = 0;
   }
 
   hash(key) {
@@ -20,10 +21,8 @@ class HashMap {
     const index = this.hash(key);
     const bucketLimit = this.capacity * this.loadFactor;
     const currentBucket = this.buckets[index];
-    console.log(this.length());
 
     if (this.length() > bucketLimit) {
-      console.log(this.length());
       this.capacity *= 2;
     }
 
@@ -84,24 +83,23 @@ class HashMap {
   }
 
   length() {
-    let counter = 0;
-    this.buckets.forEach((bucket) => {
-      if (bucket != null) {
-        counter += 1;
-      } else {
-        counter += 0;
-      }
-    });
-    return counter;
-  }
+    let count = 0;
 
-  //   entry() {
-  //     let allItems = [];
-  //     this.buckets.map((bucket) => {
-  //       allItems.push(bucket);
-  //     });
-  //     return allItems;
-  //   }
+    //check each bucket for node.
+    for (let i = 0; i < this.capacity; i++) {
+      let currentNode = this.buckets[i];
+
+      if (currentNode != null) {
+        //check if bucket has multiple nodes.
+        while (currentNode != null) {
+          count++;
+          currentNode = currentNode.nextNode;
+        }
+      }
+    }
+
+    return count;
+  }
 }
 
 const test = new HashMap();
@@ -115,5 +113,5 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-console.log(test.remove("rat"));
+console.log(test.length());
 console.log(test.buckets);
