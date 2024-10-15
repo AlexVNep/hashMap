@@ -116,6 +116,26 @@ class HashMap {
     }
     return keys;
   }
+
+  values() {
+    let values = [];
+    for (let i = 0; i < this.capacity; i++) {
+      if (this.buckets[i]) {
+        this.buckets[i].forEach((item) => {
+          // Iterate through items within the bucket
+          if (item && item.key) {
+            // Check if item and key exist
+            values.push(item.value); // Assuming you want to store the value
+          }
+        });
+      }
+    }
+    return values;
+  }
+
+  entries() {
+    return this.buckets;
+  }
 }
 
 const test = new HashMap();
@@ -129,5 +149,5 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-console.log(test.keys());
+console.log(test.entries());
 console.log(test.buckets);
