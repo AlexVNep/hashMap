@@ -65,6 +65,24 @@ class HashMap {
     }
   }
 
+  remove(key) {
+    const index = this.hash(key);
+
+    if (!this.buckets[index]) {
+      return false;
+    }
+    const indexOfPair = this.buckets[index].findIndex(
+      (pair) => pair.key === key
+    );
+
+    if (indexOfPair !== -1) {
+      this.buckets[index].splice(indexOfPair, 1);
+      return true;
+    }
+
+    return false;
+  }
+
   length() {
     let counter = 0;
     this.buckets.forEach((bucket) => {
@@ -97,4 +115,5 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-console.log(test.has("apple"));
+console.log(test.remove("rat"));
+console.log(test.buckets);
