@@ -1,6 +1,6 @@
 class HashMap {
   constructor() {
-    this.capacity = 16;
+    this.capacity = 127;
     this.loadFactor = 0.75;
     this.buckets = new Array(this.capacity);
     this.size = 0;
@@ -140,14 +140,20 @@ class HashMap {
 
 const test = new HashMap();
 
-console.log(test.buckets);
 test.set("apple", "red");
 test.set("banana", "yellow");
-test.set("rat", "grey");
-// console.log(test.entry());
-// console.log(test.get("apple"));
-// console.log(test.hash("banana"));
-// console.log(test.hash("rat"));
-console.log(test.buckets);
+test.set("carrot", "orange");
+test.set("dog", "brown");
+test.set("elephant", "gray");
+test.set("frog", "green");
+test.set("grape", "purple");
+test.set("hat", "black");
+test.set("ice cream", "white");
+test.set("jacket", "blue");
+test.set("kite", "pink");
+test.set("lion", "golden");
+test.set("moon", "silver");
+test.set("sun", "yellow");
+test.set("star", "lead");
+
 console.log(test.entries());
-console.log(test.buckets);
