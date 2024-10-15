@@ -53,6 +53,18 @@ class HashMap {
     return null;
   }
 
+  has(key) {
+    const index = this.hash(key);
+
+    if (!this.buckets[index]) {
+      return false;
+    }
+    const found = this.buckets[index].find((pair) => pair.key === key);
+    if (found) {
+      return true; // Assuming your structure has a value.value property
+    }
+  }
+
   length() {
     let counter = 0;
     this.buckets.forEach((bucket) => {
@@ -85,4 +97,4 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-console.log(test.get("apple"));
+console.log(test.has("apple"));
