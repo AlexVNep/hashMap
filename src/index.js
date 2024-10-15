@@ -100,6 +100,12 @@ class HashMap {
 
     return count;
   }
+
+  clear() {
+    for (let i = 0; i < this.capacity; i++) {
+      this.buckets[i] = [];
+    }
+  }
 }
 
 const test = new HashMap();
@@ -113,5 +119,5 @@ test.set("rat", "grey");
 // console.log(test.hash("banana"));
 // console.log(test.hash("rat"));
 console.log(test.buckets);
-console.log(test.length());
+console.log(test.clear());
 console.log(test.buckets);
